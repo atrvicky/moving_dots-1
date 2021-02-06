@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "601314706003",
+    "project_id": "tracking-data-2ec64",
+    "storage_bucket": "tracking-data-2ec64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601314706003:android:ca743a20f96383b8c47ca6",
+        "android_client_info": {
+          "package_name": "com.unravelsports.base_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601314706003-g22d6ipjjadsa19359e6r03ftgp25rnr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_PzJiaVEOY5qV9HuSmoJXwPPQRWlQUeU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601314706003-g22d6ipjjadsa19359e6r03ftgp25rnr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
