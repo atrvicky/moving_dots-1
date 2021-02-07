@@ -60,12 +60,16 @@ class _MyScreenState extends State<MyScreen> {
                     _streamData = new HashMap<String, dynamic>.from(
                       json.decode(snapshot.data),
                     );
-                    return CanvasTouchDetector(
-                      builder: (context) => CustomPaint(
-                        // if we have values use DotPainter to draw the dots on the canvas
-                        painter: ForegroundPainter(
-                          dots: _streamData['players'],
-                          context: context,
+                    return SizedBox(
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: CanvasTouchDetector(
+                        builder: (context) => CustomPaint(
+                          // if we have values use DotPainter to draw the dots on the canvas
+                          painter: ForegroundPainter(
+                            dots: _streamData['players'],
+                            context: context,
+                          ),
                         ),
                       ),
                     );

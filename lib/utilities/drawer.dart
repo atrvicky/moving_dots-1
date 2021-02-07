@@ -23,8 +23,7 @@ class ForegroundPainter extends CustomPainter {
       );
     }).toList();
 
-    // TODO: Make these 'touchy' points clickable. Currently nothing happens onTapDown
-    touchyCanvas.drawPoints(pointMode, pts, paintPts, onTapDown: (_) {
+    touchyCanvas.drawPoints(pointMode, pts, paintPts, onTapDown: (pointer) {
       print('A');
     });
   }
