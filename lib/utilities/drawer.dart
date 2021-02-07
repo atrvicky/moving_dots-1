@@ -33,3 +33,15 @@ class ForegroundPainter extends CustomPainter {
     return dots != oldPainter.dots;
   }
 }
+
+class OtherPainter extends CustomPainter {
+  OtherPainter();
+
+  @override
+  void paint(Canvas canvas, Size size) {}
+
+  @override
+  bool shouldRepaint(ForegroundPainter oldPainter) {
+    return false;
+  }
+}

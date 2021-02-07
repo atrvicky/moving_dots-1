@@ -80,6 +80,17 @@ class _MyScreenState extends State<MyScreen> {
                 }
               },
             ),
+            // I've added this builder (it needs to be a builder, because otherwise it doesn't work)
+            Builder(builder: (BuildContext context) {
+              return GestureDetector(
+                onPanUpdate: (DragUpdateDetails details) {},
+                onPanEnd: (DragEndDetails details) {},
+                child: CustomPaint(
+                  painter: OtherPainter(),
+                  size: Size.infinite,
+                ),
+              );
+            }),
           ],
         ),
       ),
