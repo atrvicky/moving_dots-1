@@ -17,9 +17,12 @@ class _MyScreenState extends State<MyScreen> {
   WebSocketChannel _channel; // initialize channel
   HashMap<String, dynamic> _streamData; // initialize stream data
 
+  // this websocket streams json files of the following structure:
+  //{image: [[[121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255], [121, 255, 125, 255]
+  // so below _streamData['image'] gives a 100x100x4 uint8array
   connectWebSocket() async {
     _channel = IOWebSocketChannel.connect(
-      'ws://142.93.238.122:8000/ws-217bce6e-c501-4dcf-8d22-37d2e967d4e6',
+      'ws://142.93.238.122:8000/pc/ws-71c37e86-dd9a-4b3d-8980-5d27a655b5d7',
     );
   }
 
@@ -60,15 +63,19 @@ class _MyScreenState extends State<MyScreen> {
                     _streamData = new HashMap<String, dynamic>.from(
                       json.decode(snapshot.data),
                     );
+                    // _streamData['image'] is a uint8 array of size 100x100x4
+                    // TODO: _streamData['image'] 100x100x array to img with ImagePainter
+                    // TODO: maybe use https://pub.dev/packages/bitmap?
+                    print(_streamData['image']);
+
                     return SizedBox(
                       width: double.infinity,
                       height: double.infinity,
                       child: CanvasTouchDetector(
                         builder: (context) => CustomPaint(
                           // if we have values use DotPainter to draw the dots on the canvas
-                          painter: ForegroundPainter(
-                            dots: _streamData['players'],
-                            context: context,
+                          painter: ImagePainter(
+                            img: _streamData['image'],
                           ),
                         ),
                       ),

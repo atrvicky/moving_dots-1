@@ -1,36 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'package:touchable/touchable.dart';
-import 'package:base_app/constants.dart';
 
-class ForegroundPainter extends CustomPainter {
-  final List<dynamic> dots;
-  final BuildContext context;
+class ImagePainter extends CustomPainter {
+  final List<dynamic> img;
 
-  ForegroundPainter({this.dots, this.context});
+  ImagePainter({this.img});
 
   @override
-  void paint(Canvas canvas, Size size) {
-    TouchyCanvas touchyCanvas = TouchyCanvas(context, canvas);
-
-    // PLAYER DOTS
-    final pointMode = ui.PointMode.points;
-    final pts = dots.map((dynamic player) {
-      player = new List<dynamic>.from(player);
-      return Offset(
-        player[1],
-        player[0],
-      );
-    }).toList();
-
-    touchyCanvas.drawPoints(pointMode, pts, paintPts, onTapDown: (pointer) {
-      print('A');
-    });
-  }
+  void paint(Canvas canvas, Size size) {}
 
   @override
-  bool shouldRepaint(ForegroundPainter oldPainter) {
-    return dots != oldPainter.dots;
+  bool shouldRepaint(ImagePainter oldPainter) {
+    return img != oldPainter.img;
   }
 }
 
@@ -41,7 +23,7 @@ class OtherPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {}
 
   @override
-  bool shouldRepaint(ForegroundPainter oldPainter) {
+  bool shouldRepaint(ImagePainter oldPainter) {
     return false;
   }
 }
